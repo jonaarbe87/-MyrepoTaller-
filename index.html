@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admylib</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        #barra {
+            background-color: #f2f2f2;
+
+        }
+
+        .navbar-brand {
+            font-size: 40px;
+        }
+
+        #primerSect {
+            font-size: 35px;
+        }
+
+        #segundaSect {
+            font-size: 35px;
+        }
+
+        .center {
+            position: absolute;
+            top: 40%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+
+        .cards img {
+            width: 250px;
+            height: 330px;
+            object-fit: cover;
+            transform-origin: center;
+            transform: perspective(800px) rotateY(25deg);
+            transition: 0.5s;
+        }
+
+        .cards {
+            max-width: 600px;
+            max-height: 350px;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .cards:hover img {
+            opacity: 0.3;
+        }
+
+        .cards img:hover {
+            transform: perspective(800px) rotateY(0deg);
+            opacity: 1;
+        }
+
+        .nav-link {
+            font-size: 20px;
+        }
+
+        #segundaSect {
+            height: 45vh;
+        }
+
+        #tercerSect img {
+            position: absolute;
+            height: 55vh;
+        }
+
+        #tercerSect iframe,
+        h2 {
+            position: relative;
+        }
+
+        #tercerSect .container {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .container {
+            width: 1000px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .container .card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .container .card .face {
+
+            height: 200px;
+            transition: 0.5s;
+        }
+
+        .container .card .face.face1 {
+            position: relative;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            transform: translateY(100px);
+        }
+
+        .container .card:hover .face.face1 {
+            background: gray;
+            transform: translateY(0);
+        }
+
+        .container .card .face.face1 .content {
+            opacity: 0.9;
+            transition: 0.5s;
+        }
+
+        .container .card:hover .face.face1 .content {
+            opacity: 1;
+        }
+
+        .container .card .face.face1 .content img {
+            max-width: 210px;
+        }
+
+        .container .card .face.face1 .content h3 {
+            margin: 10px 0 0;
+            padding: 0;
+            color: #f2f2f2;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .container .card .face.face2 {
+            position: relative;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 20px 50px gray(0, 0, 0, 0.8);
+            transform: translateY(-100px);
+        }
+
+        .container .card:hover .face.face2 {
+            transform: translateY(0);
+        }
+
+        .container .card .face.face2 .content p {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        .container .card .face.face2 .content button {
+            margin: 15px 0 0;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 900;
+            color: #333;
+            padding: 5px;
+            border: 1px solid #333;
+        }
+
+        .container .card .face.face2 .content button:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <nav id="barra" class="navbar navbar-expand-sm">
+        <!-- Brand/logo -->
+        <div class="container justify-content-start">
+            <img src="assets/imagenes/bpc.png" alt="logo" style="width: 120px;">
+            <a class="navbar-brand text-dark">
+                Biblioteca Pública Campiñas
+            </a>
+        </div>
+        <!-- Links -->
+        <ul class="container justify-content-end navbar-nav" id="items">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="landing.html">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbardrop"
+                    data-toggle="dropdown">Catálogo</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="catalogoRegistrar.html">Registrar libro</a>
+                    <a class="dropdown-item" href="catalogoVer.html">Ver catálogo</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbardrop"
+                    data-toggle="dropdown">Servicios</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="servicioPrestamo.html">Préstamo</a>
+                    <a class="dropdown-item" href="servicioCursosTalleres.html">Cursos y talleres</a>
+                    <a class="dropdown-item" href="servicioReserva.html">Reservas</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="#">Institucional</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="#">Contacto</a>
+            </li>
+            <li class="nav-item pr-2">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#registro">
+                    <i class="fa fa-sign-in"></i>
+                </button>
+            </li>
+            <li class="nav-item">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#login">
+                    <i class="fa fa-user-circle"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section id="primerSect">
+            <img src="assets/imagenes/fondo1.jpg" alt="fondo" width="100%">
+            <div class="center form-row">
+                <form action="/action_page.php">
+                    <label for="busquedaCatalogo" class="text-light">Búsqueda rápida en el Catálogo</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Ingresa un título o palabra clave"
+                            id="busquedaCatalogo">
+                    </div>
+                </form>
+            </div>
+        </section>
+
+
+
+
+        <section class="" id="segundaSect">
+            <h2 class="text-center mt-3 text-dark">Recomendados</h2>
+            <div class="cards container-fluid mt-4 pt-4 d-flex justify-content-center">
+                <div class="">
+                    <img src="assets/imagenes/libro1.jpeg">
+                </div>
+                <div class="">
+                    <img src="assets/imagenes/libro2.jpg">
+                </div>
+                <div class="">
+                    <img src="assets/imagenes/libro3.jpg">
+                </div>
+                <div class="">
+                    <img src="assets/imagenes/libro4.jpg">
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="mt-5 pt-3" id="tercerSect">
+            <img src="assets/imagenes/fondoCalendar.jpg" alt="" width="100%">
+            <h2 class="text-center text-light pt-4">Calendario de Actividades</h2>
+            <div class="container pt-2">
+                <iframe class="embed-responsive-item"
+                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23616161&ctz=America%2FBogota&showTitle=0&showDate=0&showPrint=0&showCalendars=0&showTz=0&showTabs=0&hl=es&src=ZWdhcmNpYTk1NDNAbWlzZW5hLmVkdS5jbw&src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%230B8043"
+                    width="600px" height="400px"></iframe>
+            </div>
+        </section>
+
+
+
+        <section class="mt-5 mb-5" id="cuartaSect">
+            <h2 class="text-center">Inscripciones Abiertas</h2>
+            <div class="container pt-3">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <img src="assets/imagenes/robotica.jpg">
+                            <h3>Curso Robótica</h3>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste
+                                veritatis provident at.</p>
+                            <button type="button" class="btn" data-toggle="modal" data-target="#login">Inscribirse</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <img src="assets/imagenes/python.jpeg">
+                            <h3>Curso Python</h3>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste
+                                veritatis provident at.</p>
+                            <button type="button" class="btn" data-toggle="modal" data-target="#inscripcion">Inscribirse</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <img src="assets/imagenes/artistico.jpg" width="100%">
+                            <h3>Taller Artístico</h3>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum cumque minus iste
+                                veritatis provident at.</p>
+                            <button type="button" class="btn" data-toggle="modal" data-target="#login">Inscribirse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="quintaSect">
+            <div class="row bg-dark">
+                <div class="container col align-items-center justify-content-center text-light">
+                    <h2>Sobre nosotros</h2>
+                </div>
+                <div class="col">
+                    <img src="assets/imagenes/fondoIns.jpg" alt=""class=>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="bg-light">
+            <div class="row container-fluid text-dark pt-4">
+                <div class="col text-center">
+                    <h2>Ubicación</h2>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2804.8279947080196!2d-75.60833759570296!3d6.180814876638257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46823b07fa76e7%3A0xd858c9c2ddf4b118!2sSENA%20Complejo%20Sur%20Itag%C3%BC%C3%AD!5e0!3m2!1ses!2sco!4v1669520454437!5m2!1ses!2sco"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" class="pt-3"></iframe>
+                </div>
+                <div class="col">
+                    <h2 class=" text-center">Formulario de Contacto</h2>
+                    <form action="/action_page.php">
+                        <div class="row pt-3">
+                            <div class="form-group col">
+                                <label for="name">Nombre:</label>
+                                <input type="text" class="form-control" placeholder="Ingresa tu Nombre" id="name">
+                            </div>
+                            <div class="form-group col">
+                                <label for="email">Correo electrónico:</label>
+                                <input type="text" class="form-control" placeholder="Ingresa tu Correo" id="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="msg">Mensaje:</label>
+                            <textarea class="form-control" id="msg" rows="10"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="container-fluid bg-dark text-light text-center mt-3">
+            <p>AdmyLib, todos los derechos reservados 2022 ©</p>
+        </footer>
+    </main>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal login-->
+<div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/action_page.php">
+                    <div class="form-group">
+                        <label for="email">Usuario:</label>
+                        <input type="text" class="form-control" placeholder="Ingrese su usuario" id="user">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Contraseña:</label>
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña" id="pwd">
+                    </div>
+                    <div class="form-group form-check text-center">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"> Recordarme
+                        </label>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal registro-->
+<div class="modal fade" id="registro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/action_page.php">
+                    <div class="form-group">
+                        <label for="email">Usuario:</label>
+                        <input type="text" class="form-control" placeholder="Ingrese su usuario" id="user">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Contraseña:</label>
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña" id="pwd">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Repetir contraseña:</label>
+                        <input type="password" class="form-control" placeholder="Repita su contraseña" id="pwd">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Inscripcion-->
+<div class="modal fade" id="inscripcion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Inscribirse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/action_page.php">
+                    <div class="form-group">
+                        <label>Horarios</label>
+                        <select name="" id="idioma" class="form-control">
+                            <option selected>Selecciona un horario</option>
+                            <option>8:00 - 10:00</option>
+                            <option>10:00 - 12:00</option>
+                            <option>14:00 - 16:00</option>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
