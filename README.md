@@ -1,4 +1,6 @@
 # myRepo Taller
+
+se  crean  los  roles y  las  actividades  de cada uno
    Desarrollador Uno
 	
  el  primer  desarrollador  generará  un index  html  el cual  aloja  las actividades  de  la  landing page 
